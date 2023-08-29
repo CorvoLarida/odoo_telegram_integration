@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_users_form_simple_modif_inherit_telegram_bot" model="ir.ui.view">
+        <field name="name">res.users.form.inherit.telegram.bot</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="telegram_bot_user_settings" string="Telegram Bot Settings">
+                    <group>
+                        <field name="telegram_bot_receive"/>
+                    </group>
+                    <group string="Project Notifications Settings"
+                           attrs="{'invisible': [('telegram_bot_receive', '=', False)]}">
+                        <group>
+                            <field name="telegram_bot_receive_reached_stage"/>
+                            <field name="telegram_bot_receive_new_assignees"/>
+                            <field name="telegram_bot_receive_deadline"/>
+                        </group>
+                        <group class="o_setting_right_pane"
+                               attrs="{'invisible': [('telegram_bot_receive_deadline', '=', False)]}">
+                            <field name="telegram_bot_receive_deadline_1_day"/>
+                            <field name="telegram_bot_receive_deadline_overdue"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_users_form_inherit_telegram_bot" model="ir.ui.view">
+        <field name="name">res.users.form.inherit.telegram.bot</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="telegram_bot_user_settings" string="Telegram Bot Settings">
+                    <group>
+                        <field name="telegram_bot_receive"/>
+                    </group>
+                    <group string="Project Notifications Settings"
+                           attrs="{'invisible': [('telegram_bot_receive', '=', False)]}">
+                        <group>
+                            <field name="telegram_bot_receive_reached_stage"/>
+                            <field name="telegram_bot_receive_new_assignees"/>
+                            <field name="telegram_bot_receive_deadline"/>
+                        </group>
+                        <group class="o_setting_right_pane"
+                               attrs="{'invisible': [('telegram_bot_receive_deadline', '=', False)]}">
+                            <field name="telegram_bot_receive_deadline_1_day"/>
+                            <field name="telegram_bot_receive_deadline_overdue"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="telegram_bot_rule_pm_task_deadline" model="ir.cron">
+            <field name="name">Telegram Bot: PM Tasks Deadline</field>
+            <field name="model_id" ref="model_project_task"/>
+            <field name="state">code</field>
+            <field name="code">model._scheduled_deadline()</field>
+            <field name="priority">20</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall"
+                   eval="(DateTime.now().replace(hour=4, minute=0, second=0)+timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="doall" eval="False"/>
+        </record>
+        <record id="telegram_bot_rule_pm_task_in_testing" model="ir.cron">
+            <field name="name">Telegram Bot: PM Tasks In Stage</field>
+            <field name="model_id" ref="model_project_task"/>
+            <field name="state">code</field>
+            <field name="code">model._scheduled_in_stage()</field>
+            <field name="priority">25</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall"
+                   eval="(DateTime.now().replace(hour=4, minute=0, second=0)+timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="doall" eval="False"/>
+        </record>
+    </data>
+</odoo>

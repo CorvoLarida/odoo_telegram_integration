@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="telegram_bot_bot" model="res.groups">
+            <field name="name">Bot</field>
+            <field name="category_id" ref="pm_telegram_integration.module_category_telegram_bot"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_form_inherit_telegram_username" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.telegram.username</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet//group//group[2]//field[@name='website']" position="before">
+                <field name="telegram_username" placeholder="testuser"/>
+                <field name="telegram_chat_id" groups="pm_telegram_integration.telegram_bot_bot" password="True"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

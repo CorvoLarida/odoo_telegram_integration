@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="module_category_telegram_bot" model="ir.module.category">
+            <field name="name">Telegram Bot</field>
+            <field name="description">User access levels for Telegram Bot</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="res_config_settings_view_form_inherit_telegram_bot" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.telegram.bot</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="50"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Telegram Bot Settings" string="Telegram Bot Settings"
+                     data-key="telegram_notifications_for_new_tasks">
+                    <h2>General Settings</h2>
+                    <div class="row mt16 o_settings_container" name="telegram_bot_general_settings_container">
+                        <div class="col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="telegram_bot_enable"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="telegram_bot_enable" string="Enable Telegram Bot"/>
+                                <div class="text-muted">
+                                    Enable Telegram Bot Integration
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 o_setting_box" attrs="{'invisible': [('telegram_bot_enable', '=', False)]}">
+                            <div class="row">
+                                <label for="telegram_bot_api_key" string="Bot API Key"/>
+                                <field name="telegram_bot_api_key"/>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Project Notifications Settings</h2>
+                    <div class="row mt16 o_settings_container" name="telegram_bot_project_settings_container"
+                         attrs="{'invisible': [('telegram_bot_enable', '=', False)]}">
+                        <div class="col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="telegram_bot_to_send_reached_stage"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="telegram_bot_to_send_reached_stage" string="Reached Stage"/>
+                                <div class="text-muted">
+                                    Send notification to task creator when task reaches certain stage
+                                </div>
+                                <div class="mt8"
+                                     attrs="{'invisible': [('telegram_bot_to_send_reached_stage', '=', False)]}">
+                                    <label for="telegram_bot_reached_stage_id" string="Stage"/>
+                                    <field name="telegram_bot_reached_stage_id" domain="[('user_id', '!=', uid)]"
+                                           options="{'no_create': True, 'no_open': True}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="telegram_bot_to_send_new_assignees"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="telegram_bot_to_send_new_assignees" string="New Assignees"/>
+                                <div class="text-muted">
+                                    Send notification about task to new assignees
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="telegram_bot_to_send_deadline"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="telegram_bot_to_send_deadline" string="Deadline"/>
+                                <div class="text-muted">
+                                    Send notification to assignees about task deadline
+                                </div>
+                                <div class="d-flex"
+                                     attrs="{'invisible': [('telegram_bot_to_send_deadline', '=', False)]}">
+                                    <field name="telegram_bot_to_send_deadline_1_day"/>
+                                    <div>
+                                        <label for="telegram_bot_to_send_deadline_1_day" string="1 Day Left"/>
+                                        <div class="text-muted">
+                                            Send notification to assignees if there is 1 day left until task deadline
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex"
+                                     attrs="{'invisible': [('telegram_bot_to_send_deadline', '=', False)]}">
+                                    <field name="telegram_bot_to_send_deadline_overdue"/>
+                                    <div>
+                                        <label for="telegram_bot_to_send_deadline_overdue" string="Overdue"/>
+                                        <div class="text-muted">
+                                            Send notification to assignees if task deadline is overdue
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
